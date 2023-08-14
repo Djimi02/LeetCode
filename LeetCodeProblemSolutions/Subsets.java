@@ -3,50 +3,47 @@ import java.util.List;
 
 public class Subsets {
 
-    // public List<List<Integer>> subsetsOfGivenSize(int[] nums, int size) {
-    //     if (size > nums.length) {
-    //         throw new IllegalArgumentException("Size should not be larger than nums.length.");
-    //     }
+    private int[] nums;
+    private List<List<Integer>> localSets; // Used for the recursion
 
-    //     List<List<Integer>> output = new ArrayList<>();
+    public Subsets(int[] nums) {
+        this.nums = nums;
+    }
 
-    //     for (int i = 0; i < nums.length - (size-1); i++) {
-    //         List<Integer> set = new ArrayList<>();
-    //         for (int j = 0; j < size; j++) {
-    //             set.add(nums[i+j]);
-    //         }
-    //         output.add(set);
-    //     }
+    private void recursion() {
+
         
-    //     return output;
-    // }
-
-    public void recursion(List<List<Integer>> sets, int[] nums, int size, int pointer) {
 
     }
 
-    public List<List<Integer>> subsetOfGivenSize(int[] nums, int size) {
-        List<List<Integer>> output = new ArrayList<>();
+    private List<List<Integer>> subsetsOfGivenSize(int size) {
 
-        int[] set = new int[size];
 
-        return output;
+        return null;
     }
-    
+
     public List<List<Integer>> subsets(int[] nums) {
+        this.nums = nums;
+
         List<List<Integer>> output = new ArrayList<>();
-        List<Integer> emptySet = new ArrayList<>();
-        output.add(emptySet);
+        output.add(new ArrayList<Integer>()); // Adding the empty set
 
-        for (int i = 1; i <= nums.length; i++) {
-            // subsetsOfGivenSize(output, nums, i, 0);
+        for (int i = 1; i < nums.length; i++) { // Going through all possible sizes of subsets
+            List<List<Integer>> set = subsetsOfGivenSize(i); 
 
-            for (List<Integer> set : output) {
-                output.add(set);
+            for (int j = 0; j < set.size(); j++) {
+                output.addAll(set);
             }
         }
 
-        return output;
+        // Adding the set containing all elements
+        List<Integer> allElementsSet = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            allElementsSet.add(nums[i]);
+        }
+        output.add(allElementsSet);
+
+        return null;
     }
 
     public static void main(String[] args) {
@@ -54,10 +51,10 @@ public class Subsets {
 
         // List<List<Integer>> output = new ArrayList<>(); new Subsets().subsetsOfGivenSize(output, nums, 3, 0);
 
-        List<List<Integer>> output = new Subsets().subsets(nums);
+        // List<List<Integer>> output = new Subsets().subsets(nums);
 
-        for (List<Integer> list : output) {
-            System.out.println(list);
-        }
+        // for (List<Integer> list : output) {
+        //     System.out.println(list);
+        // }
     }
 }
