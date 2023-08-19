@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class PowerSetGenerator {
+public class PowerSetGenerator<T> {
 
-    private int[] nums;
-    private List<List<Integer>> localSets; // Used for the recursion
-    private int[] localSet; // Used for the recursion
+    private T[] nums;
+    private List<List<T>> localSets; // Used for the recursion
+    private T[] localSet; // Used for the recursion
 
-    public PowerSetGenerator(int[] nums) {
+    public PowerSetGenerator(T[] nums) {
         this.nums = nums;
     }
 
     private void addSetToSets() {
-        List<Integer> arr = new ArrayList<>(localSet.length);
+        List<T> arr = new ArrayList<>(localSet.length);
         for (int i = 0; i < localSet.length; i++) {
             arr.add(localSet[i]);
         }
@@ -42,33 +42,31 @@ public class PowerSetGenerator {
 
     }
 
-    private List<List<Integer>> subsetsOfGivenSize(int size) {
+    private List<List<T>> subsetsOfGivenSize(int size) {
         localSets = new ArrayList<>();
-        localSet = new int[size];
+        localSet = (T[]) new Object[size];
 
         recursion(0, 1);
 
         return localSets;
     }
 
-    public List<List<Integer>> subsets(int[] nums) {
-        this.nums = nums;
-
-        List<List<Integer>> output = new ArrayList<>();
-        output.add(new ArrayList<Integer>()); // Adding the empty set
+    public List<List<T>> subsets() {
+        List<List<T>> output = new ArrayList<>();
+        output.add(new ArrayList<T>()); // Adding the empty set
 
         if (nums.length == 0) {
             return output;
         }
 
         for (int i = 1; i <= nums.length - 1; i++) { // Going through all possible sizes of subsets
-            List<List<Integer>> set = subsetsOfGivenSize(i);
+            List<List<T>> set = subsetsOfGivenSize(i);
 
             output.addAll(set);
         }
 
         // Adding the set containing all elements
-        List<Integer> allElementsSet = new ArrayList<>();
+        List<T> allElementsSet = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
             allElementsSet.add(nums[i]);
         }
@@ -78,13 +76,13 @@ public class PowerSetGenerator {
     }
 
     public static void main(String[] args) {
-        int[] nums = {};
+        String[] nums = {"a", "s", "d"};
 
         // List<List<Integer>> output = new Subsets(nums).subsetsOfGivenSize(2);
 
-        List<List<Integer>> output = new PowerSetGenerator(nums).subsets(nums);
+        List<List<String>> output = new PowerSetGenerator<String>(nums).subsets();
 
-        for (List<Integer> list : output) {
+        for (List<String> list : output) {
             System.out.println(list);
         }
     }
