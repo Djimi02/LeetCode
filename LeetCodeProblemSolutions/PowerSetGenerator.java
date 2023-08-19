@@ -7,10 +7,6 @@ public class PowerSetGenerator<T> {
     private List<List<T>> localSets; // Used for the recursion
     private T[] localSet; // Used for the recursion
 
-    public PowerSetGenerator(T[] nums) {
-        this.nums = nums;
-    }
-
     private void addSetToSets() {
         List<T> arr = new ArrayList<>(localSet.length);
         for (int i = 0; i < localSet.length; i++) {
@@ -51,7 +47,9 @@ public class PowerSetGenerator<T> {
         return localSets;
     }
 
-    public List<List<T>> subsets() {
+    public List<List<T>> generate(T[] nums) {
+        this.nums = nums;
+
         List<List<T>> output = new ArrayList<>();
         output.add(new ArrayList<T>()); // Adding the empty set
 
@@ -80,7 +78,7 @@ public class PowerSetGenerator<T> {
 
         // List<List<Integer>> output = new Subsets(nums).subsetsOfGivenSize(2);
 
-        List<List<String>> output = new PowerSetGenerator<String>(nums).subsets();
+        List<List<String>> output = new PowerSetGenerator<String>().generate(nums);
 
         for (List<String> list : output) {
             System.out.println(list);
