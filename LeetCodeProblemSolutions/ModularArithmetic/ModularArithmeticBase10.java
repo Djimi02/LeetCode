@@ -29,18 +29,24 @@ public class ModularArithmeticBase10 {
     public static void main(String[] args) {
         ModularArithmeticBase10 object = new ModularArithmeticBase10();
 
-        object.exercise_test();
+        // object.exercise_1();
+        object.exercise_2();
 
-        // System.out.println(object.modularExponentiation(727, 414, 4));
     }
 
-    public void exercise_test() {
-        long modulos = 727l;
+    public void exercise_1() {
+        long modulos = 11584115749l;
+        long a = 23;
+        long exponent = 17;
 
-        for (int i = 1; i <= 1000; i++) {
-            if (modularExponentiation(modulos, i, 4) == 442) {
-                System.out.println(i);
-            }
-        }
+        System.out.println(modularExponentiation(modulos, a, exponent));
+    }
+
+    public void exercise_2() {
+        long modulos = 443507;
+        long a = 64649;
+        long exponent = 241187;
+
+        System.out.println(modularExponentiation(modulos, a, exponent));
     }
 }
