@@ -7,5 +7,5 @@ public interface SortingAlgo {
      * The sorted result is saved in the input parameter.
      * @param array - array to be sorted
      */
-    public void sort(int[] array);
+    public int[] sort(int[] array);
 }
