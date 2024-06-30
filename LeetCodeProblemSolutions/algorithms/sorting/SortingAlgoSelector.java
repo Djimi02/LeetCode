@@ -5,7 +5,8 @@ package algorithms.sorting;
  */
 public enum SortingAlgoSelector {
     INSERT_SORT,
-    MERGE_SORT;
+    MERGE_SORT,
+    QUICK_SORT;
 
     static SortingAlgo select(SortingAlgoSelector selector){
         switch (selector) {
@@ -14,6 +15,9 @@ public enum SortingAlgoSelector {
 
             case MERGE_SORT:
                 return new MergeSort();
+
+            case QUICK_SORT:
+                return new QuickSort();
         
             default:
                 return new InsertSort();
