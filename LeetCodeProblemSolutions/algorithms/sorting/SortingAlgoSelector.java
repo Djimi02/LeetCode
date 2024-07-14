@@ -7,7 +7,8 @@ public enum SortingAlgoSelector {
     INSERT_SORT,
     MERGE_SORT,
     QUICK_SORT,
-    SELECTION_SORT;
+    SELECTION_SORT,
+    BUBBLE_SORT;
 
     static SortingAlgo select(SortingAlgoSelector selector){
         switch (selector) {
@@ -21,7 +22,10 @@ public enum SortingAlgoSelector {
                 return new QuickSort();
 
             case SELECTION_SORT:
-                return new SelectionSort();    
+                return new SelectionSort();
+
+            case BUBBLE_SORT:
+                return new BubbleSort();    
         
             default:
                 return new InsertSort();
